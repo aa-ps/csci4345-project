@@ -37,9 +37,14 @@ You can use Ray on a single machine or across a cluster of machines. To start Ra
 ray start --head
 ```
 
+## Connecting Workers
 After starting the head node, you should see instructions in the terminal output for connecting worker nodes to this head node.
+```bash
+ray start --address='HEAD_IP_ADDRESS:PORT'
+```
 
-## Running Scripts Already in the Repo 
+
+## Running Scripts on Head Node
 
 Once Ray has been started and you've set up your environment, you can run the provided example scripts.
 
@@ -52,13 +57,7 @@ Once Ray has been started and you've set up your environment, you can run the pr
 2. **Running `example1.py`**:
 
    ```bash
-   python example1.py
-   ```
-
-3. **Running `example2.py`**:
-
-   ```bash
-   python example2.py
+   RAY_ADDRESS='http://127.0.0.1:8265' ray job submit --working-dir . -- python example1.py
    ```
 ---
 
